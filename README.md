@@ -9,7 +9,7 @@
   - PostgreSQL
   - Mybatis
 
-  - 개발 기획
+- 개발 기획
     - API 명세서
    
       
