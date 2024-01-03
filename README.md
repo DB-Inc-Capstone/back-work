@@ -30,3 +30,18 @@
       |이슈 조회|GET|/work/:workId/issue/:issueId|
 
     - 데이터베이스 ERD
+ 
+      | 구분 | 컬럼 | Domain | NULL / NOT NULL | ETC |
+      |------|------|--------|-----------------|-----|
+      | 작업 주키 ID | workID | INT | NOT NULL | AutoIncrement |
+      | 부모의 작업 ID | parentID | INT | NULL |  |
+      | 작업 제목 | workTitle | VARCHAR(30) | NULL |  |
+      | 작업 내용 | workContent | VARCHAR(100) | NULL |  |
+      | 작업 상태 | workState | INT | NOT NULL | 0 |
+      | 시작 날짜 | startDate | Date | NOT NULL |  |
+      | 종료 날짜 | finishDate | Date | NOT NULL |  |
+      | 이슈 주키 ID | issueID | INT | NOT NULL | Autolncrement |
+      | 이슈 제목 | issueTitle | VARCHAR(30) | NULL | |
+      | 이슈 내용 | issueContent | VARCHAR(100) | NULL | |
+      | 이슈 상태 | issueState | INT | NOT NULL | 0 | 
+
