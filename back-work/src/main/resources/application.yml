@@ -1,0 +1,26 @@
+
+# postgresql \uc124\uc815
+spring:
+  sql:
+    init:
+       platform:postgresql
+       mode:always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: "viprghj2730!"
+    url: jdbc:postgresql://localhost:5432/back_work
+    
+  jpa:
+    defer-datasource-initialization: true
+
+
+# Mybatis \uc124\uc815
+mybatis:
+ 
+  type-aliases-package: kr.co.dbinc.back_work.model
+ 
+  mapper-locations: classpath:mapper/*.xml
+  
+  configuration:
+    map-underscore-to-camel-case: true

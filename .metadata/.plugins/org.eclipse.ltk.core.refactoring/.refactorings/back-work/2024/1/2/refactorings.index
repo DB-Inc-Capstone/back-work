@@ -1,0 +1,62 @@
+1704717168681	Rename resource 'application.properties'
+1704717931471	Delete element
+1704718023346	Delete element
+1704721653903	Delete element
+1704721755232	Delete element
+1704721870998	Delete element
+1704960456682	Copy compilation unit
+1704960474160	Delete element
+1704960493451	Copy compilation unit
+1704960514931	Delete element
+1704960664481	Delete element
+1704962074685	Delete element
+1704962078395	Copy compilation unit
+1704962088914	Delete element
+1704966106182	Delete element
+1704966530813	Delete element
+1704966703851	Delete element
+1704985300119	Encapsulate field 'workState'
+1704987354318	Delete element
+1704987392850	Delete element
+1704990415101	Delete element
+1704990507840	Copy package
+1704990523352	Delete element
+1704990609124	Delete element
+1704990620881	Copy package
+1704990646421	Delete element
+1704990658573	Copy package
+1704990793456	Delete element
+1704990859826	Delete element
+1704990951153	Copy package
+1704990970036	Delete element
+1704990977657	Copy package
+1704990992773	Copy package
+1704990997635	Copy package
+1704991002237	Copy package
+1704991005704	Copy package
+1704991038636	Delete element
+1704991048132	Delete element
+1704991052542	Delete element
+1704991056189	Delete element
+1704991059047	Delete element
+1704991083148	Copy package
+1704991919212	Delete element
+1704992018090	Delete element
+1704992027431	Delete element
+1704992039993	Rename package 'kr.co.dbinc.servicelmpl'
+1704992046033	Delete element
+1704992049323	Delete element
+1704992052591	Delete element
+1704992114193	Move compilation unit
+1704992124935	Delete element
+1704992255287	Copy compilation unit
+1704992262572	Delete element
+1704992372428	Infer generic type arguments
+1704992495595	Move compilation unit
+1704992758356	Move compilation unit
+1704993564306	Rename package 'kr.co.dbinc'
+1704993588940	Rename package 'kr.co.dbinc.controller'
+1704993608544	Rename package 'kr.co.dbinc.mapper'
+1704993632391	Rename package 'kr.co.dbinc.model'
+1704993646065	Rename package 'kr.co.dbinc.service'
+1704993661086	Rename package 'kr.co.dbinc.serviceImpl'
