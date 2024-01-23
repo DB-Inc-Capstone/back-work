@@ -19,6 +19,8 @@ public class WorkVO {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date finishDate;
 
 	
 

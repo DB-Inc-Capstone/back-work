@@ -1,0 +1,2 @@
+DELETE FROM work;
+DELETE FROM issue;

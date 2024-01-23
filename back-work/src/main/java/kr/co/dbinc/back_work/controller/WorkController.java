@@ -2,7 +2,7 @@ package kr.co.dbinc.back_work.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +14,13 @@ import kr.co.dbinc.back_work.model.ResponseDTO;
 import kr.co.dbinc.back_work.model.WorkVO;
 import kr.co.dbinc.back_work.service.WorkService;
 
-@RestController
+
 @RequestMapping("/work")
+@RestController
 public class WorkController {
 
-	@Autowired
-	private WorkService workService;
+
+	private final WorkService workService;
 
 	public WorkController(WorkService ws) {
 		this.workService = ws;
