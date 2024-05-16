@@ -10,7 +10,7 @@ import kr.co.dbinc.back_work.model.WorkVO;
 public interface WorkMapper {
    List<WorkVO> selectWorkList();
    
-   List<WorkVO> selectWorkById(int workID);
+   WorkVO selectWorkById(int workID);
 
    int insertWork(WorkVO workVO);
    

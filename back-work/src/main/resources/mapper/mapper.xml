@@ -4,9 +4,9 @@
 <mapper namespace="kr.co.dbinc.back_work.mapper.WorkMapper">
 
       <select id="selectWorkList" resultType="WorkVO">
-            SELECT workID,
-                      parentID,
-                      workTitle,
+           SELECT workID,
+                     parentID,
+                     workTitle,
                      workContent,
                      workState,
                      startDate,
@@ -15,12 +15,12 @@
       </select>
       
       <insert id="insertWork" parameterType="WorkVO">
-      INSERT INTO work (workTitle, workContent, workState, startDate, finishDate)
-      values (#{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
+      INSERT INTO work (parentID, workTitle, workContent, workState, startDate, finishDate)
+      values (#{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
       </insert>
       
       <insert id="insertSubWork" parameterType="WorkVO">
-      INSERT INTO work (parentI, workTitle, workContent, workState, startDate, finishDate)
+      INSERT INTO work (parentID, workTitle, workContent, workState, startDate, finishDate)
       values (#{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
       </insert>
       

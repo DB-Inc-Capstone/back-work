@@ -31,7 +31,7 @@ public class WorkServiceImpl implements WorkService {
    
    @Transactional(readOnly = true)
    @Override
-   public List<WorkVO> selectWorkById(int workID) {
+   public WorkVO selectWorkById(int workID) {
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
       return workmapper.selectWorkById(workID);
    }

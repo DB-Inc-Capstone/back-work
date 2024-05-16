@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS work (
-  "workID" SERIAL PRIMARY KEY,
-  "parentID" INTEGER,
-  "workTitle" VARCHAR(30),
-  "workContent" VARCHAR(100),
-  "workState" INTEGER NOT NULL DEFAULT '0',
-  "startDate" DATE NOT NULL,
-  "finishDate" DATE NOT NULL
+  workID SERIAL PRIMARY KEY,
+  parentID INTEGER,
+  workTitle VARCHAR(30),
+  workContent VARCHAR(100),
+  workState INTEGER NOT NULL DEFAULT '0',
+  startDate DATE NOT NULL,
+  finishDate DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS issue (
