@@ -10,4 +10,5 @@ public class ResponseDTO {
 	public String message;
 	public boolean success;
 	public WorkVO workinfo;
+	public IssueVO issueinfo;
 }

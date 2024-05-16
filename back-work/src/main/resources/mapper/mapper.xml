@@ -14,15 +14,25 @@
             FROM work;
       </select>
       
+      <select id="selectIssueList" resultType="IssueVo">
+      		SELECT issueID,
+      			   workID,
+      			   issueTitle,
+      			   issueContent,
+      			   issueState
+      		FROM issue;
+      </select>
+      
       <insert id="insertWork" parameterType="WorkVO">
       INSERT INTO work (parentID, workTitle, workContent, workState, startDate, finishDate)
       values (#{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
       </insert>
       
-      <insert id="insertSubWork" parameterType="WorkVO">
-      INSERT INTO work (parentID, workTitle, workContent, workState, startDate, finishDate)
-      values (#{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
+      <insert id="insertIssue" parameterType="IssueVO">
+      INSERT INTO issue (workID,issueState,issueTitle, issueContent)
+      values (#{workID}, #{issueState}, #{issueTitle}, #{issueContent});
       </insert>
+     
       
       <select id="selectWorkById" resultType="WorkVO">
             SELECT workID,
@@ -36,10 +46,26 @@
              WHERE workID = #{workID};
       </select>
       
+      <select id="selectIssueById" resultType="IssueVO">
+      		SELECT issueID,
+      			   workID,
+      			   issueContent,
+      			   issueTitle,
+      			   issueState
+      		FROM issue
+      		WHERE issueID = #{issueID};
+      </select>
+      
       <update id="updateWorkState" parameterType = "WorkVO">
             UPDATE work
             SET workState = #{workState}
             WHERE workID = #{workID};
+      </update>
+      
+      <update id="updateIssueState" parameterType = "IssueVO">
+      		UPDATE issue
+      		SET issueWorkState = #{issueState}
+      		WHERE issueID = #{issueID};
       </update>
       
       <update id="updateWork" parameterType = "WorkVO">
@@ -51,10 +77,23 @@
             WHERE workID = #{workID};
       </update>
       
+      <update id="updateIssue" parameterType = "IssueVO">
+      		UPDATE issue
+      		SET issueContent = #{issueContent},
+      			issueTitle = #{issueTitle}
+      		WHERE issueID = #{issueID};
+      </update>
+      
       <delete id="deleteWorkById"> 
             DELETE
             FROM work
             WHERE workID = #{workID};
+      </delete>
+      
+      <delete id="deleteIssueById">
+      		DELETE
+      		FROM issue
+      		WHERE issueID = #{issueID};
       </delete>
 
 
