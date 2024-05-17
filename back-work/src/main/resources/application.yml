@@ -3,6 +3,9 @@ server:
      9002
 # postgresql \uc124\uc815
 spring:
+  application:
+    name:
+      back-work
   sql:
     init:
        platform:postgresql
