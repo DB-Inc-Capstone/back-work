@@ -28,18 +28,21 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
 
-    - name: Move to the origin folder
-      run: cd ./back-work # 폴더 위치 변경할 때 사용할 것.
-
     - name: Change gradlew permissions
-      run: chmod +x ./gradlew
+      run: |
+        cd back-work
+        chmod +x ./gradlew
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: |
+        cd back-work
+        ./gradlew build
 
     # 도커 이미지 빌드
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:latest
+      run: |
+        cd back-work
+        docker build . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:latest
 
     # 도커 허브 로그인
     - name: Login to Docker Hub using Access Token
