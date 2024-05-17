@@ -1,6 +1,6 @@
 server:
     port:
-     9001
+     9002
 # postgresql \uc124\uc815
 spring:
   sql:
