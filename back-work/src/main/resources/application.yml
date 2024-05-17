@@ -1,19 +1,19 @@
 server:
     port:
      9002
-# postgresql \uc124\uc815
+# postgresql 설정
 spring:
   application:
     name:
       back-work
   sql:
     init:
-       platform:postgresql
-       mode:always
-       schema-locations:
-       - classpath:schema.sql
-       data-locations:
-       - classpath:data.sql
+      platform:postgresql
+      mode:always
+      schema-locations:
+      - classpath:schema.sql
+      data-locations:
+      - classpath:data.sql
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
@@ -24,17 +24,13 @@ spring:
     defer-datasource-initialization: true
 
 
-# Mybatis \uc124\uc815
+# Mybatis 설정
 mybatis:
- 
   type-aliases-package: kr.co.dbinc.back_work.model
- 
   mapper-locations: classpath:mapper/*.xml
-  
   configuration:
     map-underscore-to-camel-case: true
-    
-    
+  
 eureka:
   instance:
     prefer-ip-address: true
@@ -42,4 +38,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka # \uc11c\ubc84\uc5d0 \ub530\ub77c \ub2e4\ub974\uac8c \uc124\uc815
+      defaultZone: http://localhost:8761/eureka
