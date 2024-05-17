@@ -10,6 +10,10 @@ spring:
     init:
        platform:postgresql
        mode:always
+       schema-locations:
+       - classpath:schema.sql
+       data-locations:
+       - classpath:data.sql
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
