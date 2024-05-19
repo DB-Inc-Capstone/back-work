@@ -255,6 +255,42 @@ public class WorkController {
       }   
    }
    
+   @PatchMapping("/{workID}/issue/{issueID}")
+   public ResponseEntity<ResponseDTO> updateIssueState(@PathVariable int workID, @PathVariable int issueID, @Valid @RequestBody IssueVO issueVO) {
+	   ResponseDTO response = new ResponseDTO();
+	   WorkVO existwork = workService.selectWorkById(workID);
+	      
+	   if (existwork != null) {
+		   	IssueVO existissue = workService.selectIssueById(issueID);
+		   if(existissue != null) {
+			
+		       int result = workService.updateIssueState(issueVO);
+		       
+		       if(result != 0) {
+		    	   response.success = true;
+			       response.message = "상태가 수정되었습니다.";
+			       return new ResponseEntity<>(response, HttpStatus.OK);
+		       }
+		       else {
+		    	   response.success = false;
+		    	   response.message = "서버 오류로 상태가 변경되지 않았습니다.";
+		    	   return new ResponseEntity<>(response, HttpStatus.OK);
+		       }
+		   }
+		   else {
+			   response.success = false;
+			   response.message = "해당 이슈가 존재하지 않습니다.";
+			   return new ResponseEntity<>(response, HttpStatus.OK);
+		   }
+	   }
+	   else {
+	    	  response.success = false;
+	    	  response.message = "해당 작업이 존재하지 않습니다.";
+	    	  return new ResponseEntity<>(response, HttpStatus.OK);
+	      }   
+	   
+   }
+   
    @DeleteMapping("/{workID}")
    public ResponseEntity<ResponseDTO> deleteWork(@PathVariable int workID){
       ResponseDTO response = new ResponseDTO();

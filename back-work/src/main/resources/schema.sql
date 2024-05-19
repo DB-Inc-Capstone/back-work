@@ -1,4 +1,4 @@
-CREATE TABLE work (
+CREATE TABLE IF NOT EXISTS work (
   workID SERIAL PRIMARY KEY,
   parentID INTEGER,
   workTitle VARCHAR(30),
