@@ -1,3 +1,3 @@
-DELETE * FROM issue;
-DELETE * FROM work;
+DELETE FROM issue;
+DELETE FROM work;
 DROP FROM subwork;
