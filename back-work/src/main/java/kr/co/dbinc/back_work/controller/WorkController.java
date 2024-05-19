@@ -37,7 +37,7 @@ public class WorkController {
    public ResponseEntity<ResponseDTO> createWork(@Valid @RequestBody WorkVO workVO) {
       ResponseDTO response = new ResponseDTO();
 
-      // �۾������ʱ�ȭ ������
+      // 작업 상태 초기화
       workVO.setWorkState(1);
       
       int result = workService.insertWork(workVO);

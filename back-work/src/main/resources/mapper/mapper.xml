@@ -64,7 +64,7 @@
       
       <update id="updateIssueState" parameterType = "IssueVO">
       		UPDATE issue
-      		SET issueWorkState = #{issueState}
+      		SET issueState = #{issueState}
       		WHERE issueID = #{issueID};
       </update>
       
