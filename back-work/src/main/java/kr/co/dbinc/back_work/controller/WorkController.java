@@ -37,18 +37,18 @@ public class WorkController {
    public ResponseEntity<ResponseDTO> createWork(@Valid @RequestBody WorkVO workVO) {
       ResponseDTO response = new ResponseDTO();
 
-      // ÀÛ¾÷»óÅÂÃÊ±âÈ­ ÁøÇàÁß
+      // ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       workVO.setWorkState(1);
       
       int result = workService.insertWork(workVO);
 
       if (result != 0) {
          response.success = true;
-         response.message = "ÀÛ¾÷ÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.";
+         response.message = "ì‘ì—…ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       } else {
          response.success = false;
-         response.message = "¼­¹ö ¿À·ù·Î ÀÛ¾÷ÀÌ »ı¼ºµÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+         response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì‘ì—…ì´ ìƒì„±ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
    }
@@ -67,18 +67,18 @@ public class WorkController {
 		   
 		   if (result != 0) {
 			   response.success = true;
-		       response.message = "ÀÌ½´°¡ »ı¼ºµÇ¾ú½À´Ï´Ù.";
+		       response.message = "ì´ìŠˆê°€ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.";
 		       return new ResponseEntity<>(response, HttpStatus.OK);
 		   } 
 		   else {
 		       response.success = false;
-		       response.message = "¼­¹ö ¿À·ù·Î ÀÌ½´°¡ »ı¼ºµÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+		       response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì´ìŠˆê°€ ìƒì„±ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
 		       return new ResponseEntity<>(response, HttpStatus.OK);
 		   }
 	   }
 	   else {
 		   response.success = false;
-		   response.message = "ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+		   response.message = "ìƒìœ„ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
@@ -98,18 +98,18 @@ public class WorkController {
 		   
 		   if (result != 0) {
 			   response.success = true;
-		       response.message = "ÀÛ¾÷ÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.";
+		       response.message = "ì‘ì—…ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.";
 		       return new ResponseEntity<>(response, HttpStatus.OK);
 		   } 
 		   else {
 		       response.success = false;
-		       response.message = "¼­¹ö ¿À·ù·Î ÀÛ¾÷ÀÌ »ı¼ºµÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+		       response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì‘ì—…ì´ ìƒì„±ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
 		       return new ResponseEntity<>(response, HttpStatus.OK);
 		   }
 	   }
 	   else {
 		   response.success = false;
-		   response.message = "»óÀ§ ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+		   response.message = "ìƒìœ„ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
@@ -123,13 +123,13 @@ public class WorkController {
       
       if(work != null) {
          response.success = true;
-         response.message = "Á¶È¸°á°úÀÔ´Ï´Ù.";
+         response.message = "ì¡°íšŒ ê²°ê³¼ì…ë‹ˆë‹¤.";
          response.workinfo = work;
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
       else {
          response.success = false;
-         response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+         response.message = "í•´ë‹¹ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
    }
@@ -145,20 +145,20 @@ public class WorkController {
 		   
 		   if(issue != null) {
 			   response.success = true;
-			   response.message = "Á¶È¸°á°úÀÔ´Ï´Ù.";
+			   response.message = "ì¡°íšŒ ê²°ê³¼ì…ë‹ˆë‹¤.";
 			   response.workinfo = existwork;
 			   response.issueinfo = issue;
 			   return new ResponseEntity<>(response, HttpStatus.OK);
 		   }
 		   else {
 			   response.success = false;
-			   response.message = "ÇØ´ç ÀÌ½´°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+			   response.message = "í•´ë‹¹ ì´ìŠˆê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 			   return new ResponseEntity<>(response, HttpStatus.OK);
 		   }
 	   }
 	   else {
 		   response.success = false;
-		   response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+		   response.message = "ìƒìœ„ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
@@ -175,18 +175,18 @@ public class WorkController {
           
           if(result != 0) {
              response.success = true;
-             response.message = "ÀÛ¾÷ ¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+             response.message = "ì‘ì—…ì´ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
              return new ResponseEntity<>(response, HttpStatus.OK);
           }
           else {
              response.success = false;
-             response.message = "¼­¹ö ¿À·ù·Î ¼öÁ¤ÀÌ µÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+             response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì‘ì—…ì´ ìˆ˜ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
              return new ResponseEntity<>(response, HttpStatus.OK);
           }
       }
       else {
     	  response.success = false;
-    	  response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+    	  response.message = "ìƒìœ„ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
     	  return new ResponseEntity<>(response, HttpStatus.OK);
       }
    }
@@ -206,24 +206,24 @@ public class WorkController {
 		       
 		       if(result != 0) {
 		    	   response.success = true;
-			       response.message = "ÀÌ½´ ¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+			       response.message = "ì´ìŠˆê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			       return new ResponseEntity<>(response, HttpStatus.OK);
 		       }
 		       else {
 		    	   response.success = false;
-		    	   response.message = "¼­¹ö ¿À·ù·Î ¼öÁ¤ÀÌ µÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+		    	   response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì´ìŠˆê°€ ìˆ˜ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
 		    	   return new ResponseEntity<>(response, HttpStatus.OK);
 		       }
 		   }
 		   else {
 			   response.success = false;
-			   response.message = "ÇØ´ç ÀÌ½´°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+			   response.message = "í•´ë‹¹ ì´ìŠˆê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 			   return new ResponseEntity<>(response, HttpStatus.OK);
 		   }
 	   }
 	   else {
 		   	response.success = false;
-		   	response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+		   	response.message = "í•´ë‹¹ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		   	return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
@@ -239,18 +239,18 @@ public class WorkController {
           
           if(result != 0) {
         	  response.success = true;
-        	  response.message = "»óÅÂº¯°æÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+        	  response.message = "ìƒíƒœ ë³€ê²½ì„ ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.";
         	  return new ResponseEntity<>(response, HttpStatus.OK);
           }
           else {
         	  response.success = false;
-        	  response.message = "¼­¹ö ¿À·ù·Î ¼öÁ¤ÀÌ µÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+        	  response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ìƒíƒœë¥¼ ë³€ê²½í•˜ì§€ ëª»í•˜ì˜€ìŠµë‹ˆë‹¤.";
         	  return new ResponseEntity<>(response, HttpStatus.OK);
           }
       }
       else {
     	  response.success = false;
-    	  response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+    	  response.message = "í•´ë‹¹ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
     	  return new ResponseEntity<>(response, HttpStatus.OK);
       }   
    }
@@ -264,17 +264,17 @@ public class WorkController {
       
       if(result != 0) {
          response.success = true;
-         response.message = "ÀÛ¾÷»èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+         response.message = "ì‘ì—…ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
       else if(work == null) {
-         response.success = true;
-         response.message = "ÇØ´ç ÀÛ¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+         response.success = false;
+         response.message = "í•´ë‹¹ ì‘ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
       else {
          response.success = false;
-         response.message = "¼­¹ö ¿À·ù·Î »èÁ¦°¡ µÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+         response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì‘ì—…ì´ ì‚­ì œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
    }
@@ -287,17 +287,17 @@ public class WorkController {
 	      
 	   if(result != 0) {
 	      response.success = true;
-	      response.message = "ÀÌ½´»èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+	      response.message = "ì´ìŠˆê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.";
 	      return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
 	   else if(existissue == null) {
-	      response.success = true;
-	      response.message = "ÇØ´ç ÀÌ½´°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+	      response.success = false;
+	      response.message = "í•´ë‹¹ ì´ìŠˆê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 	      return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
 	   else {
 	      response.success = false;
-	      response.message = "¼­¹ö ¿À·ù·Î »èÁ¦ µÇÁö ¾Ê¾Ò½À´Ï´Ù.";
+	      response.message = "ì„œë²„ ì˜¤ë¥˜ë¡œ ì´ìŠˆê°€ ì‚­ì œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.";
 	      return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
 	}

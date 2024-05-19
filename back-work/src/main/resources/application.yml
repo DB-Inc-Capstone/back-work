@@ -6,22 +6,24 @@ spring:
   application:
     name:
       back-work
+      
   sql:
     init:
-      platform:postgresql
-      mode:always
+      platform: postgresql
+      mode: always
       schema-locations:
       - classpath:schema.sql
       data-locations:
       - classpath:data.sql
+      
   datasource:
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: "viprghj2730!"
-    url: jdbc:postgresql://localhost:5432/back_work
+      driver-class-name: org.postgresql.Driver
+      username: postgres
+      password: "viprghj2730!"
+      url: jdbc:postgresql://localhost:5432/back_work
     
   jpa:
-    defer-datasource-initialization: true
+      defer-datasource-initialization: true
 
 
 # Mybatis 설정
