@@ -40,7 +40,7 @@ public class WorkController {
       ResponseDTO response = new ResponseDTO();
 
       // 작업 상태 초기화
-      workVO.setWorkState(1);
+      //workVO.setWorkState(1);
       
       int result = workService.insertWork(workVO);
 
