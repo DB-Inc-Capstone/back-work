@@ -35,7 +35,7 @@ public class WorkController {
    }
 
    
-   @PostMapping("/create")
+   @PostMapping
    public ResponseEntity<ResponseDTO> createWork(@Valid @RequestBody WorkVO workVO) {
       ResponseDTO response = new ResponseDTO();
 
