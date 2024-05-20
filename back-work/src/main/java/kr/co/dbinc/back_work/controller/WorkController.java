@@ -1,5 +1,7 @@
 package kr.co.dbinc.back_work.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 
@@ -113,7 +115,24 @@ public class WorkController {
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
-    
+
+   @GetMapping
+   public ResponseEntity<ResponseDTO> getWorks() {
+	   ResponseDTO response = new ResponseDTO();
+	   
+	   List<WorkVO> works = workService.selectWorkList();
+	   
+	   if(works != null) {
+		   response.success = true;
+		   response.message = "조회 결과입니다.";
+		   response.workinfos = works;
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   } else {
+		   response.success = false;
+		   response.message = "작업 조회에 실패하였습니다.";
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   }
+   }
    
    @GetMapping("/{workID}")
    public ResponseEntity<ResponseDTO> searchWork(@PathVariable int workID) {
