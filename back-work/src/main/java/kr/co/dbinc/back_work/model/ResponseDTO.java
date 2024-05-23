@@ -16,5 +16,6 @@ public class ResponseDTO {
 	public boolean success;
 	public WorkVO workinfo;
 	public List<WorkVO> workinfos;
+	public List<IssueVO> issueinfos;
 	public IssueVO issueinfo;
 }

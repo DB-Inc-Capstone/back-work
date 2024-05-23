@@ -62,7 +62,7 @@ public class WorkController {
 	   WorkVO existwork = workService.selectWorkById(workID);
 	   
 	   if (existwork != null) {
-		   issueVO.setIssueState(1);
+		   //issueVO.setIssueState(1);
 		   issueVO.setWorkID(workID);
 		   
 		   int result = workService.insertIssue(issueVO);
@@ -93,7 +93,7 @@ public class WorkController {
 	   WorkVO existwork = workService.selectWorkById(workID);
 	   
 	   if (existwork != null) {
-		   workVO.setWorkState(1);
+		   //workVO.setWorkState(1);
 		   workVO.setParentID(workID);
 		   
 		   int result = workService.insertWork(workVO);
@@ -132,6 +132,25 @@ public class WorkController {
 		   response.message = "작업 조회에 실패하였습니다.";
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
+   }
+   
+   @GetMapping("/issue")
+   public ResponseEntity<ResponseDTO> getIssue() {
+	   ResponseDTO response = new ResponseDTO();
+	   
+	   List<IssueVO> issues =  workService.selectIssueList();
+
+	   if(issues != null) {
+		   response.success = true;
+		   response.message = "조회 결과입니다.";
+		   response.issueinfos = issues;
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   } else {
+		   response.success = false;
+		   response.message = "작업 조회에 실패하였습니다.";
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   }
+	   
    }
    
    @GetMapping("/{workID}")
@@ -181,6 +200,9 @@ public class WorkController {
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
+   
+   
+   
    
    @PutMapping("/{workID}")
    public ResponseEntity<ResponseDTO> updateWork(@PathVariable int workID, @Valid @RequestBody WorkVO workVO) {
@@ -335,7 +357,7 @@ public class WorkController {
    }
    
    @DeleteMapping("/{workID}/issue/{issueID}")
-   public ResponseEntity<ResponseDTO> deleteWork(@PathVariable int workID, @PathVariable int issueID) {
+   public ResponseEntity<ResponseDTO> deleteIssue(@PathVariable int workID, @PathVariable int issueID) {
 	   ResponseDTO response = new ResponseDTO();
 	   IssueVO existissue = workService.selectIssueById(issueID);
 	   int result = workService.deleteIssueById(issueID);
