@@ -232,17 +232,18 @@ public class WorkController {
       }
    }
    
-   @PutMapping("/{workID}/issue/{issueID}")
-   public ResponseEntity<ResponseDTO> updateIssue(@PathVariable int workID, @PathVariable int issueID, @RequestBody IssueVO issueVO) {
+   @PutMapping("/issue/{issueID}")
+   public ResponseEntity<ResponseDTO> updateIssue(@PathVariable int issueID, @RequestBody IssueVO issueVO) {
 	   ResponseDTO response = new ResponseDTO();
 	   
+	   int workID = issueVO.getWorkID();
 	   WorkVO existwork = workService.selectWorkById(workID);
 	      
 	   if (existwork != null) {
 		   	IssueVO existissue = workService.selectIssueById(issueID);
 		   if(existissue != null) {
-			   issueVO.setWorkID(workID);
-			   issueVO.setIssueID(issueID);
+			   //issueVO.setWorkID(workID);
+			   //issueVO.setIssueID(issueID);
 		       int result = workService.updateIssue(issueVO);
 		       
 		       if(result != 0) {

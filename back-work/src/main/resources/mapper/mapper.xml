@@ -73,14 +73,17 @@
             SET workContent = #{workContent},
                workTitle = #{workTitle},
                startDate = #{startDate},
-               finishDate = #{finishDate}
+               finishDate = #{finishDate},
+               workState = #{workState}
             WHERE workID = #{workID};
       </update>
       
       <update id="updateIssue" parameterType = "IssueVO">
       		UPDATE issue
       		SET issueContent = #{issueContent},
-      			issueTitle = #{issueTitle}
+      			issueTitle = #{issueTitle},
+      			issueState = #{issueState},
+      			workID = #{workID}
       		WHERE issueID = #{issueID};
       </update>
       
