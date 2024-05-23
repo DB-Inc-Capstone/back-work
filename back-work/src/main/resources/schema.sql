@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS issue (
   issueTitle VARCHAR(30),
   issueContent VARCHAR(100),
   issueState INTEGER NOT NULL DEFAULT 0,
-  CONSTRAINT FK_workissue FOREIGN KEY (workID) REFERENCES work (workID)
+  /* CONSTRAINT FK_workissue FOREIGN KEY (workID) REFERENCES work (workID) */
 );
 
 /*

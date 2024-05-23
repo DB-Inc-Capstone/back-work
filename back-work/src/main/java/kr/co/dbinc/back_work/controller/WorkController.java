@@ -269,6 +269,7 @@ public class WorkController {
 		   	return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
+   /*
    @PatchMapping("/{workID}")
    public ResponseEntity<ResponseDTO> updateWorkState(@PathVariable int workID, @Valid @RequestBody WorkVO workVO){
       ResponseDTO response = new ResponseDTO();
@@ -332,6 +333,7 @@ public class WorkController {
 	      }   
 	   
    }
+   */
    
    @DeleteMapping("/{workID}")
    public ResponseEntity<ResponseDTO> deleteWork(@PathVariable int workID){
