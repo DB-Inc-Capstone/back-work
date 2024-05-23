@@ -55,15 +55,15 @@ public class WorkController {
       }
    }
    
-   @PostMapping("/{workID}/issue")
-   	public ResponseEntity<ResponseDTO> createIssue(@PathVariable int workID, @Valid @RequestBody IssueVO issueVO) {
+   @PostMapping("/issue")
+   	public ResponseEntity<ResponseDTO> createIssue(@Valid @RequestBody IssueVO issueVO) {
 	   ResponseDTO response = new ResponseDTO();
-	   
+	   int workID = issueVO.getWorkID();
 	   WorkVO existwork = workService.selectWorkById(workID);
 	   
 	   if (existwork != null) {
 		   //issueVO.setIssueState(1);
-		   issueVO.setWorkID(workID);
+		   //issueVO.setWorkID(workID);
 		   
 		   int result = workService.insertIssue(issueVO);
 		   
