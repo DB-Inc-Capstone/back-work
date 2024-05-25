@@ -10,7 +10,8 @@
                      workContent,
                      workState,
                      startDate,
-                     finishDate
+                     finishDate,
+                     workerID
             FROM work;
       </select>
       
@@ -24,8 +25,8 @@
       </select>
       
       <insert id="insertWork" parameterType="WorkVO">
-      INSERT INTO work (parentID, workTitle, workContent, workState, startDate, finishDate)
-      values (#{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
+      INSERT INTO work (workerID ,parentID, workTitle, workContent, workState, startDate, finishDate)
+      values (#{workerID}, #{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
       </insert>
       
       <insert id="insertIssue" parameterType="IssueVO">
@@ -41,7 +42,8 @@
                   workContent,
                   workState,
                   startDate,
-                  finishDate
+                  finishDate,
+                  workerID
              FROM work
              WHERE workID = #{workID};
       </select>
