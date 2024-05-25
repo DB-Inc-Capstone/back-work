@@ -18,4 +18,5 @@ public class ResponseDTO {
 	public List<WorkVO> workinfos;
 	public List<IssueVO> issueinfos;
 	public IssueVO issueinfo;
+	
 }
