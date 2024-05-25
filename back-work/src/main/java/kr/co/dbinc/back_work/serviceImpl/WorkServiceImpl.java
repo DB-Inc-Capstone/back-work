@@ -3,10 +3,12 @@ package kr.co.dbinc.back_work.serviceImpl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import kr.co.dbinc.back_work.mapper.WorkMapper;
 import kr.co.dbinc.back_work.model.IssueVO;
@@ -18,9 +20,12 @@ import kr.co.dbinc.back_work.service.WorkService;
 @Repository
 public class WorkServiceImpl implements WorkService {
    private final SqlSession sqlSession;
-
-   public WorkServiceImpl(SqlSession ss) {
+   private final RestTemplate restTemplate;
+   
+   @Autowired
+   public WorkServiceImpl(SqlSession ss, RestTemplate rt) {
       this.sqlSession = ss;
+      this.restTemplate = rt;
    }
 
    @Transactional(readOnly = true)
@@ -55,6 +60,13 @@ public class WorkServiceImpl implements WorkService {
    @Transactional
    @Override
    public int insertWork(WorkVO workVO) {
+	  
+	  // workerID ø‰√ª
+	  String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
+	  int workerID = restTemplate.getForObject(wokerIDUrl, int.class, workVO.getWorkerID());
+	  
+	  workVO.setWorkerID(workerID);
+	  
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
       return workmapper.insertWork(workVO);
    }

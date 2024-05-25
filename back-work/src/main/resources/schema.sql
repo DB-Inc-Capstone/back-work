@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS work (
   workID SERIAL PRIMARY KEY,
   parentID INTEGER,
+  workerID INTEGER,
   workTitle VARCHAR(30),
   workContent VARCHAR(100),
   workState INTEGER NOT NULL DEFAULT 0,
