@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class WorkerVO {
-	private Long id;
+	private int id;
 	private String username;
 	private String password;
 	private String nickname;
