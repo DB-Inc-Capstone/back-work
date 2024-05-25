@@ -16,13 +16,9 @@ public class WorkVO {
 	private String workTitle;
 	private String workContent;
 	private Integer workState;
-	private Integer workerID;
+	private Long workerID;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
-	private Date finishDate;
-
-	
-
-	
+	private Date finishDate;	
 }

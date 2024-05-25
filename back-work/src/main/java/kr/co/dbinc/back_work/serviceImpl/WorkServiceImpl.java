@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import kr.co.dbinc.back_work.mapper.WorkMapper;
 import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.WorkVO;
+import kr.co.dbinc.back_work.model.WorkerVO;
 import kr.co.dbinc.back_work.service.WorkService;
 
 @Service
@@ -63,9 +64,9 @@ public class WorkServiceImpl implements WorkService {
 	  
 	  // workerID ø‰√ª
 	  String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
-	  WorkVO work = restTemplate.getForObject(wokerIDUrl, WorkVO.class, workVO.getWorkerID());
+	  WorkerVO worker = restTemplate.getForObject(wokerIDUrl, WorkerVO.class);
 	  
-	  int workerID = work.getWorkerID();
+	  Long workerID = worker.getId();
 	  workVO.setWorkerID(workerID);
 	  
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
