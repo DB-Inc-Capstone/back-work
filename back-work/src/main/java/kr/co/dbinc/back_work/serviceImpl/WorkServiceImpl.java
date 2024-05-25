@@ -64,9 +64,9 @@ public class WorkServiceImpl implements WorkService {
 	  
 	  // workerID ฟไรป
 	  String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
-	  WorkVO work = restTemplate.getForObject(wokerIDUrl, WorkVO.class,workVO.getWorkerID());
+	  WorkerVO worker = restTemplate.getForObject(wokerIDUrl, WorkerVO.class,workVO.getWorkerID());
 	  
-	  int workerID = work.getWorkerID();
+	  int workerID = worker.getId();
 	  workVO.setWorkerID(workerID);
 	  
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
