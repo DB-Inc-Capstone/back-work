@@ -25,7 +25,7 @@
       		FROM issue;
       </select>
       
-      <select id="selectWork_Rel_List" resultType="WorkVO">
+      <select id="selectWork_Rel_List" resultType="Work_RelVO">
             SELECT workID,
             	   workerID
             FROM work_rel
@@ -41,7 +41,7 @@
       values (#{workID}, #{issueState}, #{issueTitle}, #{issueContent}, #{workerID});
       </insert>
       
-      <insert id="insertWork_rel" parameterType="WorkVO">
+      <insert id="insertWork_rel" parameterType="Work_RelVO">
       INSERT INTO work_rel (workID, workerID)
       values (#{workID}, #{workerID});
       </insert>
