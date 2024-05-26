@@ -87,8 +87,16 @@ public class WorkServiceImpl implements WorkService {
    @Transactional
    @Override
    public int insertIssue(IssueVO issueVO) {
-      WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
-      return workmapper.insertIssue(issueVO);
+	// workerID ø‰√ª
+	   String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
+	   ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,issueVO.getWorkerID());
+		  
+	   WorkerDTO worker = response != null ? response.getWorker() : null;
+	   Long workerID = worker != null ? worker.getId() : null;
+	   issueVO.setWorkerID(workerID);
+
+	   WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
+	   return workmapper.insertIssue(issueVO);
    }
    
    @Transactional

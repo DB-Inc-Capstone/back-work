@@ -12,4 +12,5 @@ public class IssueVO {
 	private String issueTitle;
 	private String issueContent;
 	private Integer issueState;	
+	private Long workerID;
 }
