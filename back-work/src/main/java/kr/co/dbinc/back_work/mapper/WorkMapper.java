@@ -14,6 +14,8 @@ public interface WorkMapper {
    
    WorkVO selectWorkById(int workID);
    
+   List<WorkVO> selectWork_Rel_List();
+   
    List<IssueVO> selectIssueList();
    
    IssueVO selectIssueById(int issueID);
@@ -21,6 +23,8 @@ public interface WorkMapper {
    int insertWork(WorkVO workVO);
    
    int insertIssue(IssueVO issueVO);
+   
+   int insertWork_rel(WorkVO workVO);
    
    int updateIssue(IssueVO issueVO);
    

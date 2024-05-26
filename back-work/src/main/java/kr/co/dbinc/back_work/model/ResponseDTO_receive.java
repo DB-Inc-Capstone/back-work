@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ResponseDTO_ {
+public class ResponseDTO_receive {
 	public String message;
 	public WorkerDTO worker;
 	public List<WorkerDTO> workers;

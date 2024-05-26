@@ -14,12 +14,16 @@ public interface WorkService {
    List<IssueVO> selectIssueList();
    
    WorkVO selectWorkById(int workID);
+   
+   List<WorkVO> selectWork_Rel_List();
 
    IssueVO selectIssueById(int issueID);
    
    int insertWork(WorkVO workVO);
    
    int insertIssue(IssueVO issueVO);
+   
+   int insertWork_rel(WorkVO workVO);
    
    int updateWork(WorkVO workVO);
    

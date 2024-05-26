@@ -24,6 +24,12 @@
       		FROM issue;
       </select>
       
+      <select id="selectWork_Rel_List" resultType="WorkVO">
+            SELECT workID,
+            	   workerID
+            FROM work_rel
+      </select>
+      
       <insert id="insertWork" parameterType="WorkVO">
       INSERT INTO work (workerID ,parentID, workTitle, workContent, workState, startDate, finishDate)
       values (#{workerID}, #{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
@@ -32,6 +38,11 @@
       <insert id="insertIssue" parameterType="IssueVO">
       INSERT INTO issue (workID,issueState,issueTitle, issueContent)
       values (#{workID}, #{issueState}, #{issueTitle}, #{issueContent});
+      </insert>
+      
+      <insert id="insertWork_rel" parameterType="WorkVO">
+      INSERT INTO work_rel (workID, workerID)
+      values (#{workID}, #{workerID});
       </insert>
      
       
@@ -76,7 +87,8 @@
                workTitle = #{workTitle},
                startDate = #{startDate},
                finishDate = #{finishDate},
-               workState = #{workState}
+               workState = #{workState},
+               workerID = #{workerID}
             WHERE workID = #{workID};
       </update>
       

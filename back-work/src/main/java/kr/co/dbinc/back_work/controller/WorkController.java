@@ -37,13 +37,12 @@ public class WorkController {
    @PostMapping
    public ResponseEntity<ResponseDTO> createWork(@Valid @RequestBody WorkVO workVO) {
       ResponseDTO response = new ResponseDTO();
-
-      // 작업 상태 초기화
-      //workVO.setWorkState(1);
       
       int result = workService.insertWork(workVO);
+      
 
       if (result != 0) {
+    	 workService.insertWork_rel(workVO);
          response.success = true;
          response.message = "작업이 생성되었습니다.";
          return new ResponseEntity<>(response, HttpStatus.OK);
@@ -61,8 +60,6 @@ public class WorkController {
 	   WorkVO existwork = workService.selectWorkById(workID);
 	   
 	   if (existwork != null) {
-		   //issueVO.setIssueState(1);
-		   //issueVO.setWorkID(workID);
 		   
 		   int result = workService.insertIssue(issueVO);
 		   
@@ -158,6 +155,7 @@ public class WorkController {
       
       WorkVO work = workService.selectWorkById(workID);
       
+      
       if(work != null) {
          response.success = true;
          response.message = "조회 결과입니다.";
@@ -170,6 +168,26 @@ public class WorkController {
          return new ResponseEntity<>(response, HttpStatus.OK);
       }
    }
+   
+   @GetMapping("/worker")
+   public ResponseEntity<ResponseDTO> searchWork_Rel_List() {
+	   ResponseDTO response = new ResponseDTO();
+	   
+	   List<WorkVO> works_rel = workService.selectWork_Rel_List();
+	   
+	   if(works_rel != null) {
+		   response.success = true;
+		   response.message = "작업 및 작업자 명단입니다.";
+		   response.workinfos = works_rel;
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   } else {
+		   response.success = false;
+		   response.message = "작업 조회에 실패하였습니다.";
+		   return new ResponseEntity<>(response, HttpStatus.OK);
+	   }
+   }	   
+	   
+   
    
    @GetMapping("/{workID}/issue/{issueID}")
    public ResponseEntity<ResponseDTO> searchIssue(@PathVariable int workID,@PathVariable int issueID) {

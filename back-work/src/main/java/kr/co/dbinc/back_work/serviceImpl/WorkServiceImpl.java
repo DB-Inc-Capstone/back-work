@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import kr.co.dbinc.back_work.mapper.WorkMapper;
 import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.ResponseDTO;
-import kr.co.dbinc.back_work.model.ResponseDTO_;
+import kr.co.dbinc.back_work.model.ResponseDTO_receive;
 import kr.co.dbinc.back_work.model.WorkVO;
 import kr.co.dbinc.back_work.model.WorkerDTO;
 import kr.co.dbinc.back_work.service.WorkService;
@@ -54,6 +54,14 @@ public class WorkServiceImpl implements WorkService {
    
    @Transactional(readOnly = true)
    @Override
+   public List<WorkVO> selectWork_Rel_List() {
+      WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
+      return workmapper.selectWork_Rel_List();
+   }
+   
+  
+   @Transactional(readOnly = true)
+   @Override
    public IssueVO selectIssueById(int issueID) {
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
       return workmapper.selectIssueById(issueID);
@@ -66,7 +74,7 @@ public class WorkServiceImpl implements WorkService {
 	  
 	  // workerID ø‰√ª
 	  String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
-	  ResponseDTO_ response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_.class,workVO.getWorkerID());
+	  ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,workVO.getWorkerID());
 	  
 	  WorkerDTO worker = response != null ? response.getWorker() : null;
 	  Long workerID = worker != null ? worker.getId() : null;
@@ -81,6 +89,13 @@ public class WorkServiceImpl implements WorkService {
    public int insertIssue(IssueVO issueVO) {
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
       return workmapper.insertIssue(issueVO);
+   }
+   
+   @Transactional
+   @Override
+   public int insertWork_rel(WorkVO workVO) {
+      WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
+      return workmapper.insertWork_rel(workVO);
    }
    
    @Transactional
