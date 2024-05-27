@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.WorkVO;
+import kr.co.dbinc.back_work.model.Work_RelVO;
 
 @Service
 public interface WorkService {
@@ -23,7 +24,7 @@ public interface WorkService {
    
    int insertIssue(IssueVO issueVO);
    
-   int insertWork_rel(WorkVO workVO);
+   int insertWork_rel(Work_RelVO work_rel);
    
    int updateWork(WorkVO workVO);
    

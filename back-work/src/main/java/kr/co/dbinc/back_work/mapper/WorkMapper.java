@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.WorkVO;
+import kr.co.dbinc.back_work.model.Work_RelVO;
 
 
 @Repository
@@ -24,7 +25,7 @@ public interface WorkMapper {
    
    int insertIssue(IssueVO issueVO);
    
-   int insertWork_rel(WorkVO workVO);
+   int insertWork_rel(Work_RelVO work_rel);
    
    int updateIssue(IssueVO issueVO);
    

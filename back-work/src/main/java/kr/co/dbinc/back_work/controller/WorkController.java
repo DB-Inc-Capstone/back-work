@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.ResponseDTO;
 import kr.co.dbinc.back_work.model.WorkVO;
+import kr.co.dbinc.back_work.model.Work_RelVO;
 import kr.co.dbinc.back_work.service.WorkService;
 
 
@@ -40,9 +41,11 @@ public class WorkController {
       
       int result = workService.insertWork(workVO);
       
+     // Work_RelVO work_rel = null;
+     // work_rel.setWorkerID(workVO.getWorkerID());
 
       if (result != 0) {
-    	 workService.insertWork_rel(workVO);
+    	// workService.insertWork_rel(work_rel);
          response.success = true;
          response.message = "작업이 생성되었습니다.";
          return new ResponseEntity<>(response, HttpStatus.OK);

@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 public class Work_RelVO {
 
 	private Integer workID;
-	private Integer workerID;	
+	private Long workerID;	
 }

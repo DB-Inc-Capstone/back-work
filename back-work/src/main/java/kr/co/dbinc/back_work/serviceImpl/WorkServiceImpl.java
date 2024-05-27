@@ -15,6 +15,7 @@ import kr.co.dbinc.back_work.model.IssueVO;
 import kr.co.dbinc.back_work.model.ResponseDTO;
 import kr.co.dbinc.back_work.model.ResponseDTO_receive;
 import kr.co.dbinc.back_work.model.WorkVO;
+import kr.co.dbinc.back_work.model.Work_RelVO;
 import kr.co.dbinc.back_work.model.WorkerDTO;
 import kr.co.dbinc.back_work.service.WorkService;
 
@@ -101,9 +102,9 @@ public class WorkServiceImpl implements WorkService {
    
    @Transactional
    @Override
-   public int insertWork_rel(WorkVO workVO) {
+   public int insertWork_rel(Work_RelVO work_rel) {
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
-      return workmapper.insertWork_rel(workVO);
+      return workmapper.insertWork_rel(work_rel);
    }
    
    @Transactional
