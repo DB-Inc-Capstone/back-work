@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 
 import org.springframework.http.ResponseEntity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,8 @@ public class WorkController {
 
 
    private final WorkService workService;
+   
+   private final Logger logger = LogManager.getFormatterLogger(this.getClass());
 
    public WorkController(WorkService ws) {
       this.workService = ws;
@@ -37,6 +41,9 @@ public class WorkController {
    
    @PostMapping
    public ResponseEntity<ResponseDTO> createWork(@Valid @RequestBody WorkVO workVO) {
+	   
+      logger.info("createWork 호출");
+
       ResponseDTO response = new ResponseDTO();
       
       int result = workService.insertWork(workVO);
@@ -58,6 +65,9 @@ public class WorkController {
    
    @PostMapping("/issue")
    	public ResponseEntity<ResponseDTO> createIssue(@Valid @RequestBody IssueVO issueVO) {
+	   
+	   logger.info("createIssue 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   int workID = issueVO.getWorkID();
 	   WorkVO existwork = workService.selectWorkById(workID);
@@ -87,6 +97,9 @@ public class WorkController {
 	   
    @PostMapping("/{workID}/sub")
    public ResponseEntity<ResponseDTO> createSubWork(@PathVariable int workID, @Valid @RequestBody WorkVO workVO){
+	   
+	   logger.info("createSubWork 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   
 	   WorkVO existwork = workService.selectWorkById(workID);
@@ -117,6 +130,9 @@ public class WorkController {
 
    @GetMapping
    public ResponseEntity<ResponseDTO> getWorks() {
+	   
+	   logger.info("getWorks 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   
 	   List<WorkVO> works = workService.selectWorkList();
@@ -154,6 +170,9 @@ public class WorkController {
    
    @GetMapping("/{workID}")
    public ResponseEntity<ResponseDTO> searchWork(@PathVariable int workID) {
+	   
+	  logger.info("searchWork 호출");
+	   
       ResponseDTO response = new ResponseDTO();
       
       WorkVO work = workService.selectWorkById(workID);
@@ -194,6 +213,9 @@ public class WorkController {
    
    @GetMapping("/{workID}/issue/{issueID}")
    public ResponseEntity<ResponseDTO> searchIssue(@PathVariable int workID,@PathVariable int issueID) {
+	   
+	   logger.info("searchIssue 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   
 	   WorkVO existwork = workService.selectWorkById(workID);
@@ -226,6 +248,9 @@ public class WorkController {
    
    @PutMapping("/{workID}")
    public ResponseEntity<ResponseDTO> updateWork(@PathVariable int workID, @Valid @RequestBody WorkVO workVO) {
+	   
+	  logger.info("updateWork 호출");
+	   
       ResponseDTO response = new ResponseDTO();
       
       WorkVO existwork = workService.selectWorkById(workID);
@@ -254,6 +279,9 @@ public class WorkController {
    
    @PutMapping("/issue/{issueID}")
    public ResponseEntity<ResponseDTO> updateIssue(@PathVariable int issueID, @RequestBody IssueVO issueVO) {
+	
+	   logger.info("updateIssue 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   
 	   int workID = issueVO.getWorkID();
@@ -292,6 +320,9 @@ public class WorkController {
    /*
    @PatchMapping("/{workID}")
    public ResponseEntity<ResponseDTO> updateWorkState(@PathVariable int workID, @Valid @RequestBody WorkVO workVO){
+	   
+	  logger.info("updateWorkState 호출");
+	   
       ResponseDTO response = new ResponseDTO();
       
       WorkVO existwork = workService.selectWorkById(workID);
@@ -320,6 +351,9 @@ public class WorkController {
    
    @PatchMapping("/{workID}/issue/{issueID}")
    public ResponseEntity<ResponseDTO> updateIssueState(@PathVariable int workID, @PathVariable int issueID, @Valid @RequestBody IssueVO issueVO) {
+	   
+	   logger.info("updateIssueState 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   WorkVO existwork = workService.selectWorkById(workID);
 	      
@@ -357,6 +391,9 @@ public class WorkController {
    
    @DeleteMapping("/{workID}")
    public ResponseEntity<ResponseDTO> deleteWork(@PathVariable int workID){
+	   
+	  logger.info("deleteWork 호출");
+	   
       ResponseDTO response = new ResponseDTO();
       
       WorkVO work = workService.selectWorkById(workID);
@@ -381,6 +418,9 @@ public class WorkController {
    
    @DeleteMapping("/{workID}/issue/{issueID}")
    public ResponseEntity<ResponseDTO> deleteIssue(@PathVariable int workID, @PathVariable int issueID) {
+
+	   logger.info("deleteIssue 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   IssueVO existissue = workService.selectIssueById(issueID);
 	   int result = workService.deleteIssueById(issueID);

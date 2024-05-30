@@ -24,6 +24,9 @@ spring:
     
   jpa:
       defer-datasource-initialization: true
+      
+  zipkin:
+    base-url: http://localhost:9412
 
 
 # Mybatis 설정
