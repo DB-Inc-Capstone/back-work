@@ -150,7 +150,10 @@ public class WorkController {
    }
    
    @GetMapping("/issue")
-   public ResponseEntity<ResponseDTO> getIssue() {
+   public ResponseEntity<ResponseDTO> getIssues() {
+	   
+	   logger.info("getIssues 호출");
+	   
 	   ResponseDTO response = new ResponseDTO();
 	   
 	   List<IssueVO> issues =  workService.selectIssueList();
