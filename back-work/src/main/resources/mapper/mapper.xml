@@ -31,12 +31,12 @@
             FROM work_rel;
       </select>
       
-      <insert id="insertWork" parameterType="WorkVO" useGeneratedKeys="true" keyProperty="workId">
+      <insert id="insertWork" parameterType="WorkVO" useGeneratedKeys="true" keyProperty="workID">
       INSERT INTO work (workerID ,parentID, workTitle, workContent, workState, startDate, finishDate)
       values (#{workerID}, #{parentID}, #{workTitle}, #{workContent}, #{workState}, #{startDate}, #{finishDate});
       </insert>
       
-      <insert id="insertIssue" parameterType="IssueVO" useGeneratedKeys="true" keyProperty="issueId">
+      <insert id="insertIssue" parameterType="IssueVO" useGeneratedKeys="true" keyProperty="issueID">
       INSERT INTO issue (workID,issueState,issueTitle, issueContent, workerID)
       values (#{workID}, #{issueState}, #{issueTitle}, #{issueContent}, #{workerID});
       </insert>
