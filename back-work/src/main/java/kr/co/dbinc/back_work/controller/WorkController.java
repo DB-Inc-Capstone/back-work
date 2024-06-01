@@ -181,7 +181,7 @@ public class WorkController {
     		  	.issueState(1)
     		  	.workID(list_of_pk.get(0))
     		  	.build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("DB 스키마 설계 오류")
@@ -189,7 +189,7 @@ public class WorkController {
 	  		   .issueState(2)
 	  		   .workID(list_of_pk.get(1))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("REST API 인증 문제")
@@ -197,7 +197,7 @@ public class WorkController {
 	  		   .issueState(0)
 	  		   .workID(list_of_pk.get(2))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("프론트엔드와 백엔드 연동 시 CORS 오류")
@@ -205,7 +205,7 @@ public class WorkController {
 	  		   .issueState(2)
 	  		   .workID(list_of_pk.get(3))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("JWT 토큰 만료 문제")
@@ -213,7 +213,7 @@ public class WorkController {
 	  		   .issueState(0)
 	  		   .workID(list_of_pk.get(4))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("AWS 인프라 구축 중 권한 오류")
@@ -221,7 +221,7 @@ public class WorkController {
 	  		   .issueState(0)
 	  		   .workID(list_of_pk.get(5))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("CI/CD 파이프라인 빌드 실패")
@@ -229,7 +229,7 @@ public class WorkController {
 	  		   .issueState(1)
 	  		   .workID(list_of_pk.get(6))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
       
       issueVO = IssueVO.builder()
 	  		   .issueTitle("서버 성능 최적화 중 리소스 누수")
@@ -237,7 +237,7 @@ public class WorkController {
 	  		   .issueState(0)
 	  		   .workID(list_of_pk.get(7))
 	  		   .build();
-      createIssue(issueVO);
+      workService.insertIssue(issueVO);
      
       /**
        * 결과 반환
