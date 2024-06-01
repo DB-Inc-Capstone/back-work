@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ import kr.co.dbinc.back_work.service.WorkService;
 public class WorkServiceImpl implements WorkService {
    private final SqlSession sqlSession;
    private final RestTemplate restTemplate;
+   
+   @Value("${API_GATEWAY_URL}")
+   private String url;
    
    @Autowired
    public WorkServiceImpl(SqlSession ss, RestTemplate rt) {
@@ -73,8 +77,8 @@ public class WorkServiceImpl implements WorkService {
    @Override
    public int insertWork(WorkVO workVO) {
 	  
-	  // workerID ¿äÃ»
-	  String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
+	  // workerID ï¿½ï¿½Ã»
+	  String wokerIDUrl = url + "/worker/{workerID}";
 	  ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,workVO.getWorkerID());
 	  
 	  WorkerDTO worker = response != null ? response.getWorker() : null;
@@ -88,8 +92,8 @@ public class WorkServiceImpl implements WorkService {
    @Transactional
    @Override
    public int insertIssue(IssueVO issueVO) {
-	// workerID ¿äÃ»
-	   String wokerIDUrl = "http://ec2-43-203-124-16.ap-northeast-2.compute.amazonaws.com:9001/worker/{workerID}";
+	// workerID ï¿½ï¿½Ã»
+	   String wokerIDUrl = url + "/worker/{workerID}";
 	   ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,issueVO.getWorkerID());
 		  
 	   WorkerDTO worker = response != null ? response.getWorker() : null;
