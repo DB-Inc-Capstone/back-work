@@ -97,8 +97,8 @@ public class WorkController {
     		  	 .startDate(formatter.parse("2024-05-20"))
     		  	 .finishDate(formatter.parse("2024-05-25"))
     		  	 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("데이터베이스 스키마 설계")
@@ -107,8 +107,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-06-10"))
    		  	     .finishDate(formatter.parse("2024-06-15"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("REST API 엔드포인트 구현")
@@ -117,8 +117,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-06-01"))
    		  	     .finishDate(formatter.parse("2024-09-01"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("프론트엔드와 백엔드 연동")
@@ -127,8 +127,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-05-15"))
    		  	     .finishDate(formatter.parse("2024-05-20"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("사용자 인증 및 권한 관리")
@@ -137,8 +137,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-05-20"))
 		  	     .finishDate(formatter.parse("2024-06-15"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("AWS 인프라 구축")
@@ -147,8 +147,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-06-01"))
 		  	     .finishDate(formatter.parse("2024-06-23"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("CI/CD 파이프라인 설정")
@@ -157,8 +157,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-06-10"))
 		  	     .finishDate(formatter.parse("2024-06-20"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       workVO = WorkVO.builder()
 		  		 .workTitle("서버 성능 최적화")
@@ -167,8 +167,8 @@ public class WorkController {
 		  		 .startDate(formatter.parse("2024-05-15"))
 		  	     .finishDate(formatter.parse("2024-05-25"))
 		  		 .build();
-      pk = workService.insertWork(workVO);
-      list_of_pk.add(pk);
+      workService.insertWork(workVO);
+      list_of_pk.add(workVO.getWorkID());
       
       /**
        * 이슈 추가하기
