@@ -77,7 +77,7 @@ public class WorkServiceImpl implements WorkService {
    @Override
    public int insertWork(WorkVO workVO) {
 	  
-	  // workerID ��û
+	  // workerID
 	  String wokerIDUrl = url + "/worker/{workerID}";
 	  ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,workVO.getWorkerID());
 	  
@@ -92,7 +92,7 @@ public class WorkServiceImpl implements WorkService {
    @Transactional
    @Override
    public int insertIssue(IssueVO issueVO) {
-	// workerID ��û
+	// workerID
 	   String wokerIDUrl = url + "/worker/{workerID}";
 	   ResponseDTO_receive response = restTemplate.getForObject(wokerIDUrl, ResponseDTO_receive.class,issueVO.getWorkerID());
 		  
@@ -148,12 +148,24 @@ public class WorkServiceImpl implements WorkService {
    
    @Transactional
    @Override
+   public int deleteAllWork() {
+	   WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
+	   return workmapper.deleteAllWork();
+   }
+   
+   @Transactional
+   @Override
    public int deleteIssueById(int issueID) {
       WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
       return workmapper.deleteIssueById(issueID);
    }
    
-   
+   @Transactional
+   @Override
+   public int deleteAllIssue() {
+	   WorkMapper workmapper = sqlSession.getMapper(WorkMapper.class);
+	   return workmapper.deleteAllIssue();
+   }
    
    
 }

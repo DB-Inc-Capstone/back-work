@@ -1,6 +1,12 @@
 package kr.co.dbinc.back_work.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -8,6 +14,7 @@ import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +70,189 @@ public class WorkController {
       }
    }
    
+   /**
+    * 테스트 용도의 work 및 issue 생성 진행
+    * @throws ParseException 
+    */
+   @GetMapping("/test")
+   public ResponseEntity<ResponseDTO> createTestWorkAndIssue() throws ParseException {
+	   
+      logger.info("createTestWorkAndIssue 호출");
+      
+      // 초기화 후 진행
+      resetTestIssue(); 
+      resetTestWork();
+      
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+      Integer pk;
+      List<Integer> list_of_pk = new ArrayList<Integer>();
+      
+      /**
+       * 작업 추가하기
+       */
+      WorkVO workVO;
+      
+      workVO = WorkVO.builder()
+    		     .workID(null)
+    		  	 .workTitle("API 문서 작성")
+    		  	 .workContent("작업을 새로 추가하는 API 문서 작성")
+    		  	 .workState(2)
+    		  	 .startDate(formatter.parse("2024-05-20"))
+    		  	 .finishDate(formatter.parse("2024-05-25"))
+    		  	 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("데이터베이스 스키마 설계")
+		  		 .workContent("웹 애플리케이션을 위한 데이터베이스 스키마 설계")
+		  		 .workState(0)
+		  		 .startDate(formatter.parse("2024-06-10"))
+   		  	     .finishDate(formatter.parse("2024-06-15"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("REST API 엔드포인트 구현")
+		  		 .workContent("사용자 관리 및 인증을 위한 REST API 엔드포인트 구현")
+		  		 .workState(0)
+		  		 .startDate(formatter.parse("2024-06-01"))
+   		  	     .finishDate(formatter.parse("2024-09-01"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("프론트엔드와 백엔드 연동")
+		  		 .workContent("프론트엔드 애플리케이션과 백엔드 API 서버 간의 연동 작업")
+		  		 .workState(2)
+		  		 .startDate(formatter.parse("2024-05-15"))
+   		  	     .finishDate(formatter.parse("2024-05-20"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("사용자 인증 및 권한 관리")
+		  		 .workContent("JWT 기반 사용자 인증 및 권한 관리 시스템 구현")
+		  		 .workState(1)
+		  		 .startDate(formatter.parse("2024-05-20"))
+		  	     .finishDate(formatter.parse("2024-06-15"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("AWS 인프라 구축")
+		  		 .workContent("웹 애플리케이션을 위한 AWS 클라우드 인프라 구축 및 설정")
+		  		 .workState(0)
+		  		 .startDate(formatter.parse("2024-06-01"))
+		  	     .finishDate(formatter.parse("2024-06-23"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("CI/CD 파이프라인 설정")
+		  		 .workContent("Jenkins를 사용한 지속적 통합 및 배포 파이프라인 설정")
+		  		 .workState(0)
+		  		 .startDate(formatter.parse("2024-06-10"))
+		  	     .finishDate(formatter.parse("2024-06-20"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      workVO = WorkVO.builder()
+		  		 .workTitle("서버 성능 최적화")
+		  		 .workContent("서버 리소스 사용량 최적화를 위한 튜닝 작업")
+		  		 .workState(2)
+		  		 .startDate(formatter.parse("2024-05-15"))
+		  	     .finishDate(formatter.parse("2024-05-25"))
+		  		 .build();
+      pk = workService.insertWork(workVO);
+      list_of_pk.add(pk);
+      
+      /**
+       * 이슈 추가하기
+       */
+      IssueVO issueVO;
+      
+      issueVO = IssueVO.builder()
+    		  	.issueTitle("API 문서 작성")
+    		  	.issueContent("작업을 새로 추가하는 API 문서 작성")
+    		  	.issueState(1)
+    		  	.workID(list_of_pk.get(0))
+    		  	.build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("DB 스키마 설계 오류")
+	  		   .issueContent("사용자 테이블의 중복된 필드로 인해 데이터가 제대로 저장되지 않음")
+	  		   .issueState(2)
+	  		   .workID(list_of_pk.get(1))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("REST API 인증 문제")
+	  		   .issueContent("사용자 관리 및 인증을 위한 REST API가 일부 사용자에 대해 인증 실패함")
+	  		   .issueState(0)
+	  		   .workID(list_of_pk.get(2))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("프론트엔드와 백엔드 연동 시 CORS 오류")
+	  		   .issueContent("프론트엔드 애플리케이션과 백엔드 API 서버 간의 연동 시 CORS 정책 오류 발생")
+	  		   .issueState(2)
+	  		   .workID(list_of_pk.get(3))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("JWT 토큰 만료 문제")
+	  		   .issueContent("JWT 기반 사용자 인증 시스템에서 토큰 만료 시간이 잘못 설정됨")
+	  		   .issueState(0)
+	  		   .workID(list_of_pk.get(4))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("AWS 인프라 구축 중 권한 오류")
+	  		   .issueContent("AWS 클라우드 인프라 구축 시 S3 버킷 접근 권한이 제대로 설정되지 않음")
+	  		   .issueState(0)
+	  		   .workID(list_of_pk.get(5))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("CI/CD 파이프라인 빌드 실패")
+	  		   .issueContent("Jenkins를 사용한 지속적 통합 및 배포 파이프라인 설정 중 빌드 오류 발생")
+	  		   .issueState(1)
+	  		   .workID(list_of_pk.get(6))
+	  		   .build();
+      createIssue(issueVO);
+      
+      issueVO = IssueVO.builder()
+	  		   .issueTitle("서버 성능 최적화 중 리소스 누수")
+	  		   .issueContent("서버 리소스 사용량 최적화를 위한 튜닝 작업 중 메모리 누수 현상 발생")
+	  		   .issueState(0)
+	  		   .workID(list_of_pk.get(7))
+	  		   .build();
+      createIssue(issueVO);
+     
+      /**
+       * 결과 반환
+       */
+      ResponseDTO response = new ResponseDTO();
+      response.success = true;
+      response.message = "테스트 용도의 work-set 과 issue-set 을 생성하였습니다.";
+      
+      return new ResponseEntity<>(response, HttpStatus.OK);
+   }
+   
+   
    @PostMapping("/issue")
    	public ResponseEntity<ResponseDTO> createIssue(@Valid @RequestBody IssueVO issueVO) {
 	   
@@ -93,7 +283,7 @@ public class WorkController {
 		   return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
    }
-	   
+
 	   
    @PostMapping("/{workID}/sub")
    public ResponseEntity<ResponseDTO> createSubWork(@PathVariable int workID, @Valid @RequestBody WorkVO workVO){
@@ -444,6 +634,42 @@ public class WorkController {
 	      return new ResponseEntity<>(response, HttpStatus.OK);
 	   }
 	}
+    
+    
+ 
+    /**
+     *  테스트 용도의 work 초기화 진행
+     *
+     */
+    @GetMapping("/reset")
+    public ResponseEntity<ResponseDTO> resetTestWork() {
+	   
+	    logger.info("resetTestWork 호출");
+	   
+	    workService.deleteAllWork();
+ 	   
+	    ResponseDTO response = new ResponseDTO();
+	    response.success = true;
+	    response.message = "모든 work-set 을 초기화하였습니다.";
+	      
+	    return new ResponseEntity<>(response, HttpStatus.OK);
+    }
    
-
+    /**
+     * 테스트 용도의 work 초기화 진행
+     */
+    @GetMapping("/issue/reset")
+    public ResponseEntity<ResponseDTO> resetTestIssue() {
+	   
+	    logger.info("resetTestIssue 호출");
+	   
+	    workService.deleteAllIssue();
+	   
+	    ResponseDTO response = new ResponseDTO();
+	    response.success = true;
+	    response.message = "모든 issue-set 을 초기화하였습니다.";
+	      
+	    return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    
 }

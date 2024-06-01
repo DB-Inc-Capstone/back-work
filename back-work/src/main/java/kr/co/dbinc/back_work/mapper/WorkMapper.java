@@ -37,6 +37,10 @@ public interface WorkMapper {
    
    int deleteWorkById(int workID);
    
+   int deleteAllWork();
+   
    int deleteIssueById(int issueID);
+   
+   int deleteAllIssue();
 
 }
